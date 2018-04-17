@@ -348,12 +348,26 @@
       <site.skin.version>1.0.0</site.skin.version>
       <!-- Testing server -->
       <server.test.path>/swss</server.test.path>
+      
+      <spring-io-platform.version>Athens-RELEASE</spring-io-platform.version>
    </properties>
 
    <!-- ********************************************** -->
    <!-- *************** DEPENDENCIES ***************** -->
    <!-- ********************************************** -->
-
+    <dependencyManagement>
+        <!-- Import the maven Spring IO Platform Bill Of Materials (BOM) -->
+        <dependencies>
+            <dependency>
+                <groupId>io.spring.platform</groupId>
+                <artifactId>platform-bom</artifactId>
+                <version>${spring-io-platform.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+    
    <dependencies>
       <!-- ============================================== -->
       <!-- ================== SPRING ==================== -->
@@ -362,50 +376,47 @@
          <!-- Spring Beans -->
          <groupId>org.springframework</groupId>
          <artifactId>spring-beans</artifactId>
-         <version>${spring.version}</version>
       </dependency>
       <dependency>
          <!-- Spring Core -->
          <groupId>org.springframework</groupId>
          <artifactId>spring-core</artifactId>
-         <version>${spring.version}</version>
       </dependency>
       <dependency>
          <!-- Spring Context -->
          <groupId>org.springframework</groupId>
          <artifactId>spring-context</artifactId>
-         <version>${spring.version}</version>
       </dependency>
       <dependency>
          <!-- Spring Data JPA -->
          <groupId>org.springframework.data</groupId>
          <artifactId>spring-data-jpa</artifactId>
-         <version>${spring.data.version}</version>
       </dependency>
       <dependency>
          <!-- Spring Security -->
          <groupId>org.springframework.security</groupId>
          <artifactId>spring-security-core</artifactId>
-         <version>${spring.security.version}</version>
       </dependency>
       <dependency>
          <!-- Spring WS -->
          <groupId>org.springframework.ws</groupId>
          <artifactId>spring-ws-core</artifactId>
-         <version>${spring.ws.version}</version>
       </dependency>
       <dependency>
          <!-- Spring WS Security -->
          <groupId>org.springframework.ws</groupId>
          <artifactId>spring-ws-security</artifactId>
-         <version>${spring.ws.version}</version>
       </dependency>
       <dependency>
          <!-- Spring WS XML -->
          <groupId>org.springframework.ws</groupId>
          <artifactId>spring-xml</artifactId>
-         <version>${spring.ws.version}</version>
       </dependency>
+        <dependency>
+        	<groupId>javax.servlet</groupId>
+        	<artifactId>javax.servlet-api</artifactId>
+        	<scope>provided</scope>
+        </dependency>
       <!-- ============================================== -->
       <!-- ========= PERSISTENCE DEPENDENCIES =========== -->
       <!-- ============================================== -->
@@ -413,25 +424,21 @@
          <!-- Ehcache -->
          <groupId>net.sf.ehcache</groupId>
          <artifactId>ehcache</artifactId>
-         <version>${ehcache.version}</version>
       </dependency>
       <dependency>
          <!-- H2 -->
          <groupId>com.h2database</groupId>
          <artifactId>h2</artifactId>
-         <version>${h2.version}</version>
       </dependency>
       <dependency>
          <!-- Hikari CP -->
          <groupId>com.zaxxer</groupId>
          <artifactId>HikariCP</artifactId>
-         <version>${hikari.version}</version>
       </dependency>
       <dependency>
          <!-- Liquibase -->
          <groupId>org.liquibase</groupId>
          <artifactId>liquibase-core</artifactId>
-         <version>${liquibase.version}</version>
       </dependency>
       <!-- ============================================== -->
       <!-- ================ HIBERNATE =================== -->
@@ -440,13 +447,11 @@
          <!-- Entity Manager -->
          <groupId>org.hibernate</groupId>
          <artifactId>hibernate-entitymanager</artifactId>
-         <version>${hibernate.version}</version>
       </dependency>
       <dependency>
          <!-- Hibernate Ehcache -->
          <groupId>org.hibernate</groupId>
          <artifactId>hibernate-ehcache</artifactId>
-         <version>${hibernate.version}</version>
       </dependency>
       <dependency>
          <!-- Hibernate JPA API -->
@@ -461,13 +466,11 @@
          <!-- Commons Codec -->
          <groupId>commons-codec</groupId>
          <artifactId>commons-codec</artifactId>
-         <version>${commons.codec.version}</version>
       </dependency>
       <dependency>
          <!-- WSS4j Common -->
          <groupId>org.apache.wss4j</groupId>
          <artifactId>wss4j-ws-security-common</artifactId>
-         <version>${wss4j.version}</version>
       </dependency>
       <dependency>
          <!-- XMLSec -->
@@ -479,7 +482,6 @@
          <!-- XWSS -->
          <groupId>com.sun.xml.wss</groupId>
          <artifactId>xws-security</artifactId>
-         <version>${xwssecurity.version}</version>
          <exclusions>
             <exclusion>
                <groupId>javax.xml.crypto</groupId>
@@ -494,7 +496,6 @@
          <!-- Wsdl4j -->
          <groupId>wsdl4j</groupId>
          <artifactId>wsdl4j</artifactId>
-         <version>${wsdl4j.version}</version>
       </dependency>
       <!-- ============================================== -->
       <!-- ================== LOGGING =================== -->
@@ -503,13 +504,11 @@
          <!-- Commons Logging -->
          <groupId>commons-logging</groupId>
          <artifactId>commons-logging</artifactId>
-         <version>${commons.logging.version}</version>
       </dependency>
       <dependency>
          <!-- Log4j Core -->
          <groupId>org.apache.logging.log4j</groupId>
          <artifactId>log4j-core</artifactId>
-         <version>${log4j.version}</version>
       </dependency>
       <dependency>
          <!-- Log4j Commons Logging Bridge -->
@@ -521,13 +520,11 @@
          <!-- Log4j SLF4J Bridge -->
          <groupId>org.apache.logging.log4j</groupId>
          <artifactId>log4j-slf4j-impl</artifactId>
-         <version>${log4j.version}</version>
       </dependency>
       <dependency>
          <!-- SL4J API -->
          <groupId>org.slf4j</groupId>
          <artifactId>slf4j-api</artifactId>
-         <version>${slf4j.version}</version>
       </dependency>
       <!-- ============================================== -->
       <!-- ============ OTHER DEPENDENCIES ============== -->
@@ -536,7 +533,6 @@
          <!-- Guava -->
          <groupId>com.google.guava</groupId>
          <artifactId>guava</artifactId>
-         <version>${guava.version}</version>
       </dependency>
       <dependency>
          <!-- SAAJ API -->
@@ -548,13 +544,11 @@
          <!-- SAAJ -->
          <groupId>com.sun.xml.messaging.saaj</groupId>
          <artifactId>saaj-impl</artifactId>
-         <version>${saaj.impl.version}</version>
       </dependency>
       <dependency>
          <!-- XML APIs -->
          <groupId>xml-apis</groupId>
          <artifactId>xml-apis</artifactId>
-         <version>${xmlapis.version}</version>
       </dependency>
       <!-- ============================================== -->
       <!-- =========== VERSION ENFORCEMENT ============== -->
@@ -569,13 +563,11 @@
          <!-- Javax activation -->
          <groupId>javax.activation</groupId>
          <artifactId>activation</artifactId>
-         <version>${javax.activation.version}</version>
       </dependency>
       <dependency>
          <!-- Joda Time -->
          <groupId>joda-time</groupId>
          <artifactId>joda-time</artifactId>
-         <version>${joda.time.version}</version>
       </dependency>
       <dependency>
          <!-- STAX API -->
@@ -597,14 +589,12 @@
          <!-- Freemarker -->
          <groupId>org.freemarker</groupId>
          <artifactId>freemarker</artifactId>
-         <version>${freemarker.version}</version>
          <scope>test</scope>
       </dependency>
       <dependency>
          <!-- Junit -->
          <groupId>junit</groupId>
          <artifactId>junit</artifactId>
-         <version>${junit.version}</version>
          <scope>test</scope>
       </dependency>
       <dependency>
@@ -617,14 +607,12 @@
          <!-- Spring Test -->
          <groupId>org.springframework</groupId>
          <artifactId>spring-test</artifactId>
-         <version>${spring.version}</version>
          <scope>test</scope>
       </dependency>
       <dependency>
          <!-- Spring WS Test -->
          <groupId>org.springframework.ws</groupId>
          <artifactId>spring-ws-test</artifactId>
-         <version>${spring.ws.version}</version>
          <scope>test</scope>
       </dependency>
       <dependency>
