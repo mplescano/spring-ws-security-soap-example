@@ -349,7 +349,7 @@
       <!-- Testing server -->
       <server.test.path>/swss</server.test.path>
       
-      <spring-io-platform.version>Athens-RELEASE</spring-io-platform.version>
+      <spring-io-platform.version>Cairo-RELEASE</spring-io-platform.version>
    </properties>
 
    <!-- ********************************************** -->
