@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 /**
- * Authentication data repositories.
+ * Authentication services.
  */
 
-package com.bernardomg.example.swss.auth.repository;
+package com.bernardomg.example.swss.main.auth.service;

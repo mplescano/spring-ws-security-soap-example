@@ -1,4 +1,4 @@
-package com.bernardomg.example.swss.config;
+package com.bernardomg.example.swss.main.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,7 +13,6 @@ public class WebRootConfig {
 			ResourceLoader loader) {
 		PropertySourcesPlaceholderConfigurer propertyConfigurer = new PropertySourcesPlaceholderConfigurer();
 		propertyConfigurer.setLocations(
-				loader.getResource("classpath:config/persistence.properties"),
 				loader.getResource("classpath:config/keystore/keystore.properties"),
 				loader.getResource(
 						"classpath:config/keystore/keystore-wss4j.properties"));

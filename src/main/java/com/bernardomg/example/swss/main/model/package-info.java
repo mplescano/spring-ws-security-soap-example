@@ -22,11 +22,17 @@
  * SOFTWARE.
  */
 /**
- * Repositories for the persistence layer.
+ * Model for the application.
  * <p>
- * The {@link com.bernardomg.example.swss.repository.ExampleEntityRepository
- * ExampleEntityRepository} is a simple Spring-JPA repository, meant to allow
- * querying the entities returned by the endpoints.
+ * This consists just on a very simple entity, containing an id and a name.
+ * <p>
+ * The {@link com.bernardomg.example.swss.model.ExampleEntity ExampleEntity}
+ * interface and a JPA implementation of it, the
+ * {@link com.bernardomg.example.swss.model.DefaultExampleEntity
+ * DefaultExampleEntity}, represent it.
+ * <p>
+ * Remember that there is also a JAXB annotated model, uses for the SOAP
+ * messages, in the generated classes package.
  */
 
-package com.bernardomg.example.swss.repository;
+package com.bernardomg.example.swss.main.model;

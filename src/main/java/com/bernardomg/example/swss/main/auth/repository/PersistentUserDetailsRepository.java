@@ -22,51 +22,31 @@
  * SOFTWARE.
  */
 
-package com.bernardomg.example.swss.model;
+package com.bernardomg.example.swss.main.auth.repository;
 
-import java.io.Serializable;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import com.bernardomg.example.swss.main.auth.model.PersistentUserDetails;
+
 
 /**
- * A simple entity for the example application.
- * <p>
- * This is meant to be the internal domain model used by the web service. The
- * one for the SOAP messages is in the JAXB generated classes package.
- *
+ * Repository for user details.
+ * 
  * @author Bernardo Mart&iacute;nez Garrido
+ *
  */
-public interface ExampleEntity extends Serializable {
+@Repository
+public interface PersistentUserDetailsRepository
+        extends JpaRepository<PersistentUserDetails, Long> {
 
     /**
-     * Returns the identifier assigned to this entity.
-     * <p>
-     * If no identifier has been assigned yet, then the value is expected to be
-     * {@code null} or lower than zero.
-     *
-     * @return the entity's identifier
+     * Returns the user details for the received username.
+     * 
+     * @param username
+     *            username to search for
+     * @return the user details for the received username
      */
-    public Integer getId();
-
-    /**
-     * Returns the name of the entity.
-     *
-     * @return the entity's name
-     */
-    public String getName();
-
-    /**
-     * Sets the identifier assigned to this entity.
-     *
-     * @param identifier
-     *            the identifier for the entity
-     */
-    public void setId(final Integer identifier);
-
-    /**
-     * Changes the name of the entity.
-     *
-     * @param name
-     *            the name to set on the entity
-     */
-    public void setName(final String name);
+    public PersistentUserDetails findOneByUsername(final String username);
 
 }

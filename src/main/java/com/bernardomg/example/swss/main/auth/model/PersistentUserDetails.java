@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.bernardomg.example.swss.auth.model;
+package com.bernardomg.example.swss.main.auth.model;
 
 import java.util.ArrayList;
 import java.util.Collection;

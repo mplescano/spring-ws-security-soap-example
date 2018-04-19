@@ -22,17 +22,10 @@
  * SOFTWARE.
  */
 /**
- * Model for the application.
+ * Authentication data entities.
  * <p>
- * This consists just on a very simple entity, containing an id and a name.
- * <p>
- * The {@link com.bernardomg.example.swss.model.ExampleEntity ExampleEntity}
- * interface and a JPA implementation of it, the
- * {@link com.bernardomg.example.swss.model.DefaultExampleEntity
- * DefaultExampleEntity}, represent it.
- * <p>
- * Remember that there is also a JAXB annotated model, uses for the SOAP
- * messages, in the generated classes package.
+ * These include persistent implementations of {@code UserDetails} and
+ * {@code GrantedAuthority}.
  */
 
-package com.bernardomg.example.swss.model;
+package com.bernardomg.example.swss.main.auth.model;

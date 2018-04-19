@@ -22,10 +22,11 @@
  * SOFTWARE.
  */
 /**
- * Authentication data entities.
+ * Repositories for the persistence layer.
  * <p>
- * These include persistent implementations of {@code UserDetails} and
- * {@code GrantedAuthority}.
+ * The {@link com.bernardomg.example.swss.repository.ExampleEntityRepository
+ * ExampleEntityRepository} is a simple Spring-JPA repository, meant to allow
+ * querying the entities returned by the endpoints.
  */
 
-package com.bernardomg.example.swss.auth.model;
+package com.bernardomg.example.swss.main.repository;

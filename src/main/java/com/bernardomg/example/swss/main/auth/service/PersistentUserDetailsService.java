@@ -22,9 +22,7 @@
  * SOFTWARE.
  */
 
-package com.bernardomg.example.swss.auth.service;
-
-import static com.google.common.base.Preconditions.checkNotNull;
+package com.bernardomg.example.swss.main.auth.service;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,7 +32,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.bernardomg.example.swss.auth.repository.PersistentUserDetailsRepository;
+import com.bernardomg.example.swss.main.auth.repository.PersistentUserDetailsRepository;
 
 
 /**

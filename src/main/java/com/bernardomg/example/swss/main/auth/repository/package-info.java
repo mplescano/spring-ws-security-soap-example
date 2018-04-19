@@ -21,22 +21,8 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-
-package com.bernardomg.example.swss.repository;
-
-import org.springframework.data.jpa.repository.JpaRepository;
-
-import com.bernardomg.example.swss.model.DefaultExampleEntity;
-
 /**
- * Spring-JPA repository for {@link DefaultExampleEntity}.
- * <p>
- * This is a simple repository just to allow the endpoints querying the entities
- * they are asked for.
- *
- * @author Bernardo Mart&iacute;nez Garrido
+ * Authentication data repositories.
  */
-public interface ExampleEntityRepository
-        extends JpaRepository<DefaultExampleEntity, Integer> {
 
-}
+package com.bernardomg.example.swss.main.auth.repository;

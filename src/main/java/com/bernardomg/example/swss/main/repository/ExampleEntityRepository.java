@@ -22,29 +22,25 @@
  * SOFTWARE.
  */
 
-package com.bernardomg.example.swss.auth.repository;
+package com.bernardomg.example.swss.main.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-import com.bernardomg.example.swss.auth.model.PersistentUserDetails;
+import com.bernardomg.example.swss.main.model.DefaultExampleEntity;
+
 
 
 /**
- * Repository for user details.
- * 
- * @author Bernardo Mart&iacute;nez Garrido
+ * Spring-JPA repository for {@link DefaultExampleEntity}.
+ * <p>
+ * This is a simple repository just to allow the endpoints querying the entities
+ * they are asked for.
  *
+ * @author Bernardo Mart&iacute;nez Garrido
  */
-public interface PersistentUserDetailsRepository
-        extends JpaRepository<PersistentUserDetails, Long> {
-
-    /**
-     * Returns the user details for the received username.
-     * 
-     * @param username
-     *            username to search for
-     * @return the user details for the received username
-     */
-    public PersistentUserDetails findOneByUsername(final String username);
+@Repository
+public interface ExampleEntityRepository
+        extends JpaRepository<DefaultExampleEntity, Integer> {
 
 }
