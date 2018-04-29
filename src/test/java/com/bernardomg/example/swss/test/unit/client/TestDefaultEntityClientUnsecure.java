@@ -40,7 +40,7 @@ import org.springframework.ws.test.client.ResponseCreator;
 import org.springframework.ws.test.client.ResponseCreators;
 
 import com.bernardomg.example.swss.client.DefaultEntityClient;
-import com.bernardomg.example.swss.model.ExampleEntity;
+import com.bernardomg.example.swss.main.model.ExampleEntity;
 import com.bernardomg.example.swss.test.util.config.context.ClientWss4jContextPaths;
 import com.bernardomg.example.swss.test.util.config.properties.SoapPropertiesPaths;
 import com.bernardomg.example.swss.test.util.test.unit.client.AbstractTestEntityClient;

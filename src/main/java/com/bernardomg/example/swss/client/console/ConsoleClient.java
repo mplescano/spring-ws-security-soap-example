@@ -37,8 +37,7 @@ import org.springframework.core.NestedRuntimeException;
 import org.springframework.core.io.ClassPathResource;
 
 import com.bernardomg.example.swss.client.EntityClient;
-import com.bernardomg.example.swss.model.ExampleEntity;
-
+import com.bernardomg.example.swss.main.model.ExampleEntity;
 /**
  * Runnable console-based client.
  * <p>

@@ -35,13 +35,14 @@ import org.mockito.Matchers;
 import org.mockito.Mockito;
 import org.springframework.ws.soap.security.callback.AbstractCallbackHandler;
 
-import com.bernardomg.example.swss.model.ExampleEntity;
-import com.bernardomg.example.swss.service.domain.ExampleEntityService;
+import com.bernardomg.example.swss.main.model.ExampleEntity;
+import com.bernardomg.example.swss.main.service.ExampleEntityService;
 import com.sun.xml.wss.impl.callback.PasswordValidationCallback;
 import com.sun.xml.wss.impl.callback.PasswordValidationCallback.PasswordValidationException;
 import com.sun.xml.wss.impl.callback.PasswordValidationCallback.PasswordValidator;
 import com.sun.xml.wss.impl.callback.TimestampValidationCallback;
 import com.sun.xml.wss.impl.callback.TimestampValidationCallback.TimestampValidator;
+
 
 /**
  * Factory which creates mocked dependencies for the web service endpoints.

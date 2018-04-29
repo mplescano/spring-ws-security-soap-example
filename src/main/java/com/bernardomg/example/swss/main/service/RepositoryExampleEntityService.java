@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.bernardomg.example.swss.service.domain;
+package com.bernardomg.example.swss.main.service;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -31,9 +31,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.bernardomg.example.swss.model.DefaultExampleEntity;
-import com.bernardomg.example.swss.model.ExampleEntity;
-import com.bernardomg.example.swss.repository.ExampleEntityRepository;
+import com.bernardomg.example.swss.main.model.DefaultExampleEntity;
+import com.bernardomg.example.swss.main.model.ExampleEntity;
+import com.bernardomg.example.swss.main.repository.ExampleEntityRepository;
 
 /**
  * Example entity domain service implementation, using an
@@ -90,7 +90,7 @@ public class RepositoryExampleEntityService implements ExampleEntityService {
 
         checkNotNull(identifier, "Received a null pointer as identifier");
 
-        entity = getExampleEntityRepository().findOne(identifier);
+        entity = getExampleEntityRepository().findById(identifier).get();
 
         if (entity == null) {
             // No entity found for the id

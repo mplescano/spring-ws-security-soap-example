@@ -24,7 +24,7 @@
 
 package com.bernardomg.example.swss.client;
 
-import com.bernardomg.example.swss.model.ExampleEntity;
+import com.bernardomg.example.swss.main.model.ExampleEntity;
 
 /**
  * Client for querying the web service endpoints.

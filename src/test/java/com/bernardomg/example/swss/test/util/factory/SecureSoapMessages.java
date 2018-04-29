@@ -61,7 +61,6 @@ import javax.xml.transform.dom.DOMSource;
 
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.codec.digest.DigestUtils;
-import org.apache.tools.ant.util.Base64Converter;
 import org.apache.xml.security.exceptions.XMLSecurityException;
 import org.apache.xml.security.signature.XMLSignature;
 import org.apache.xml.security.transforms.Transforms;
@@ -211,7 +210,7 @@ public final class SecureSoapMessages {
         final String BaseURI = new ClassPathResource(pathBase).getURI()
                 .toString();
         SOAPMessage soapMessage;
-        final Base64Converter base64 = new Base64Converter();
+        final Base64 base64 = new Base64();
         String token;
         Node binaryToken;
         X509Certificate cert;
@@ -238,7 +237,7 @@ public final class SecureSoapMessages {
         root.getElementsByTagName("wsse:Security").item(0)
                 .appendChild(sig.getElement());
 
-        token = base64.encode(cert.getEncoded());
+        token = base64.encodeToString(cert.getEncoded());
 
         binaryToken = root.getElementsByTagName("wsse:BinarySecurityToken")
                 .item(0);

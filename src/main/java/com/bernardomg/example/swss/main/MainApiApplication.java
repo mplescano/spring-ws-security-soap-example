@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jmx.JmxAutoConfiguration;
 import org.springframework.boot.autoconfigure.web.servlet.DispatcherServletAutoConfiguration;
+import org.springframework.boot.autoconfigure.webservices.WebServicesAutoConfiguration;
 
 /**
  * Look at https://spring.io/guides/gs/producing-web-service/
@@ -12,7 +13,7 @@ import org.springframework.boot.autoconfigure.web.servlet.DispatcherServletAutoC
  *
  */
 @SpringBootApplication
-@EnableAutoConfiguration(exclude = { DispatcherServletAutoConfiguration.class, JmxAutoConfiguration.class })
+@EnableAutoConfiguration(exclude = { WebServicesAutoConfiguration.class, DispatcherServletAutoConfiguration.class, JmxAutoConfiguration.class })
 public class MainApiApplication {
 
     public static void main(String[] args) {

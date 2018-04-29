@@ -21,18 +21,31 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-/**
- * Domain model services.
- * <p>
- * The {@link com.bernardomg.example.swss.service.domain.ExampleEntityService
- * ExampleEntityService} is a simple domain service, meant to allow querying the
- * entities returned by the endpoints.
- * <p>
- * Its default implementation, the
- * {@link com.bernardomg.example.swss.service.domain.RepositoryExampleEntityService
- * DefaultExampleEntityService}, makes use of the
- * {@link com.bernardomg.example.swss.repository.ExampleEntityRepository
- * ExampleEntityRepository} for this.
- */
 
-package com.bernardomg.example.swss.service.domain;
+package com.bernardomg.example.swss.main.service;
+
+import com.bernardomg.example.swss.main.model.ExampleEntity;
+
+/**
+ * Service for the example entity domain.
+ * <p>
+ * This is a domain service just to allow the endpoints querying the entities
+ * they are asked for.
+ *
+ * @author Bernardo Mart&iacute;nez Garrido
+ */
+public interface ExampleEntityService {
+
+    /**
+     * Returns an entity with the given id.
+     * <p>
+     * If no instance exists with that id then an entity with a negative id is
+     * expected to be returned. Avoid returning nulls.
+     *
+     * @param identifier
+     *            identifier of the entity to find
+     * @return the entity for the given id
+     */
+    public ExampleEntity findById(final Integer identifier);
+
+}

@@ -34,10 +34,10 @@ import org.springframework.ws.client.core.support.WebServiceGatewaySupport;
 import org.springframework.ws.soap.client.core.SoapActionCallback;
 
 import com.bernardomg.example.swss.endpoint.ExampleEntityEndpointConstants;
-import com.bernardomg.example.swss.model.DefaultExampleEntity;
-import com.bernardomg.example.swss.model.ExampleEntity;
 import com.bernardomg.example.swss.generated.entity.GetEntityRequest;
 import com.bernardomg.example.swss.generated.entity.GetEntityResponse;
+import com.bernardomg.example.swss.main.model.DefaultExampleEntity;
+import com.bernardomg.example.swss.main.model.ExampleEntity;
 
 /**
  * Spring-based client for querying the web service endpoints.

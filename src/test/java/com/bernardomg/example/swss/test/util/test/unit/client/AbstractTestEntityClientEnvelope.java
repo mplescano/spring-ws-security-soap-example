@@ -42,7 +42,7 @@ import org.springframework.ws.test.client.ResponseCreator;
 import org.springframework.ws.test.client.ResponseCreators;
 
 import com.bernardomg.example.swss.client.DefaultEntityClient;
-import com.bernardomg.example.swss.model.ExampleEntity;
+import com.bernardomg.example.swss.main.model.ExampleEntity;
 
 /**
  * Abstract unit tests for an endpoint testing that it handles envelope-based

@@ -32,7 +32,7 @@ import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 
 import com.bernardomg.example.swss.client.EntityClient;
-import com.bernardomg.example.swss.model.ExampleEntity;
+import com.bernardomg.example.swss.main.model.ExampleEntity;
 import com.bernardomg.example.swss.test.util.config.properties.TestPropertiesPaths;
 
 /**
