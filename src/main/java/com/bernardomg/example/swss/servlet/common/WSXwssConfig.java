@@ -1,4 +1,4 @@
-package com.bernardomg.example.swss.servlet.password.common.xwss;
+package com.bernardomg.example.swss.servlet.common;
 
 import java.util.List;
 
@@ -12,9 +12,6 @@ import org.springframework.ws.server.EndpointInterceptor;
 import org.springframework.ws.soap.security.xwss.XwsSecurityInterceptor;
 import org.springframework.ws.soap.server.endpoint.interceptor.PayloadValidatingInterceptor;
 import org.springframework.ws.soap.server.endpoint.interceptor.SoapEnvelopeLoggingInterceptor;
-
-import com.bernardomg.example.swss.servlet.common.CommonInterceptorConfig;
-import com.bernardomg.example.swss.servlet.common.WsdlConfig;
 
 @Configuration
 @EnableWs

@@ -1,4 +1,4 @@
-package com.bernardomg.example.swss.servlet.password.digest.xwss;
+package com.bernardomg.example.swss.servlet.signature.xwss;
 
 import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.boot.autoconfigure.AutoConfigurationExcludeFilter;
@@ -15,6 +15,6 @@ import com.bernardomg.example.swss.servlet.common.WSXwssConfig;
         @Filter(type = FilterType.CUSTOM, classes = TypeExcludeFilter.class),
         @Filter(type = FilterType.CUSTOM, classes = AutoConfigurationExcludeFilter.class) })
 @Import(value = { WSXwssConfig.class })
-public class WSPasswordDigestXwssContext {
+public class WSSignatureXwssContext {
 
 }

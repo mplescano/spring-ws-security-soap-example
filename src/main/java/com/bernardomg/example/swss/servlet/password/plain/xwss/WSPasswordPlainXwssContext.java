@@ -8,7 +8,7 @@ import org.springframework.context.annotation.FilterType;
 import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.ComponentScan.Filter;
 
-import com.bernardomg.example.swss.servlet.password.common.xwss.WSXwssConfig;
+import com.bernardomg.example.swss.servlet.common.WSXwssConfig;
 
 @SpringBootConfiguration
 @ComponentScan(excludeFilters = {
