@@ -14,6 +14,7 @@ import com.bernardomg.example.swss.servlet.password.digest.xwss.WSPasswordDigest
 import com.bernardomg.example.swss.servlet.password.plain.wss4j.WSPasswordPlainWss4jContext;
 import com.bernardomg.example.swss.servlet.password.plain.xwss.WSPasswordPlainXwssContext;
 import com.bernardomg.example.swss.servlet.signature.wss4j.WSSignatureWss4jContext;
+import com.bernardomg.example.swss.servlet.signature.xwss.WSSignatureXwssContext;
 import com.bernardomg.example.swss.servlet.unsecure.WSUnsecureContext;
 
 @Configuration
@@ -45,6 +46,13 @@ public class WSServletsConfig {
     public ServletRegistrationBean<MessageDispatcherServlet> wsSignatureWss4jServlet(WebServicesProperties properties) {
     	String path = "/signature/wss4j/*";
         Class<WSSignatureWss4jContext> classParam = WSSignatureWss4jContext.class;
+        return buildServletRegistration(properties, path, classParam);
+    }
+    
+    @Bean
+    public ServletRegistrationBean<MessageDispatcherServlet> wsSignatureXwssServlet(WebServicesProperties properties) {
+    	String path = "/signature/xwss/*";
+        Class<WSSignatureXwssContext> classParam = WSSignatureXwssContext.class;
         return buildServletRegistration(properties, path, classParam);
     }
     
