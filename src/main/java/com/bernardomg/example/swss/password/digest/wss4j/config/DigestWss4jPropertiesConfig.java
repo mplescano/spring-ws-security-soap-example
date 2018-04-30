@@ -6,7 +6,7 @@ import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.core.io.ResourceLoader;
 
 @Configuration
-public class PropertiesConfig {
+public class DigestWss4jPropertiesConfig {
 
 	@Bean
 	public static PropertySourcesPlaceholderConfigurer placeHolderConfigurer(

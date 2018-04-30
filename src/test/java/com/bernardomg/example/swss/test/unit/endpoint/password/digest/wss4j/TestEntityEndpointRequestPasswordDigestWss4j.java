@@ -30,6 +30,7 @@ import javax.xml.transform.stream.StreamSource;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
+import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
 import com.bernardomg.example.swss.test.util.config.context.ServletWss4jContextPaths;
 import com.bernardomg.example.swss.test.util.config.properties.EndpointWss4jPropertiesPaths;
@@ -45,7 +46,7 @@ import com.bernardomg.example.swss.test.util.test.unit.endpoint.AbstractTestEnti
  * @author Bernardo Mart&iacute;nez Garrido
  */
 @ContextConfiguration(
-        locations = { ServletWss4jContextPaths.PASSWORD_DIGEST_MOCKED })
+        classes = { ServletWss4jContextPaths.TestServletPasswordDigestWss4j.class }, loader = AnnotationConfigContextLoader.class)
 @TestPropertySource({ SoapPropertiesPaths.PASSWORD_DIGEST,
         InterceptorWss4jPropertiesPaths.PASSWORD_DIGEST,
         EndpointWss4jPropertiesPaths.PASSWORD_DIGEST,

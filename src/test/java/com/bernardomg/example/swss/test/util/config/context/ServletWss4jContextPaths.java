@@ -41,7 +41,8 @@ import org.springframework.ws.server.EndpointInterceptor;
 import org.springframework.ws.soap.security.wss4j2.Wss4jSecurityInterceptor;
 
 import com.bernardomg.example.swss.common.WsdlConfig;
-import com.bernardomg.example.swss.password.plain.wss4j.config.PropertiesConfig;
+import com.bernardomg.example.swss.password.digest.wss4j.config.DigestWss4jPropertiesConfig;
+import com.bernardomg.example.swss.password.plain.wss4j.config.PlainWss4jPropertiesConfig;
 import com.bernardomg.example.swss.test.util.factory.WebServiceMockFactory;
 
 /**
@@ -100,10 +101,19 @@ public final class ServletWss4jContextPaths {
     }
 
     @Configuration
-    @Import({ PropertiesConfig.class, WsdlConfig.class })
+    @Import({ DigestWss4jPropertiesConfig.class, WsdlConfig.class })
     @ComponentScan("com.bernardomg.example.swss.endpoint")
-    public static class TestServletPasswordPlainWss4j {
-
+    public static class TestServletPasswordDigestWss4j extends CommonTestServletPasswordWss4j {
+    }
+    
+    @Configuration
+    @Import({ PlainWss4jPropertiesConfig.class, WsdlConfig.class })
+    @ComponentScan("com.bernardomg.example.swss.endpoint")
+    public static class TestServletPasswordPlainWss4j extends CommonTestServletPasswordWss4j {
+    }
+    
+    public static class CommonTestServletPasswordWss4j {
+    	
         @Configuration
         @EnableWs
         public static class WSConfig extends WsConfigurerAdapter {
@@ -143,7 +153,6 @@ public final class ServletWss4jContextPaths {
                 return mocksFactory.getValidationCallbackHandler();
             }
         }
-        
     }
 
 }
