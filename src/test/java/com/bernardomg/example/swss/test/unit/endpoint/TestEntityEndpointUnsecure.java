@@ -38,10 +38,10 @@ import org.springframework.ws.test.server.RequestCreators;
 import org.springframework.ws.test.server.ResponseMatcher;
 import org.springframework.ws.test.server.ResponseMatchers;
 
+import com.bernardomg.example.swss.servlets.unsecure.WSUnsecureContext;
 import com.bernardomg.example.swss.test.util.config.properties.EndpointXwssPropertiesPaths;
 import com.bernardomg.example.swss.test.util.config.properties.SoapPropertiesPaths;
 import com.bernardomg.example.swss.test.util.test.unit.endpoint.AbstractTestEndpoint;
-import com.bernardomg.example.swss.unsecure.WSUnsecureContext;
 
 /**
  * Unit tests for an unsecured endpoint testing that it handles payload-based

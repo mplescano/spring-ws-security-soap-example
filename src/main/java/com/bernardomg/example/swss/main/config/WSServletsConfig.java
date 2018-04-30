@@ -9,11 +9,11 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.ws.transport.http.MessageDispatcherServlet;
 
-import com.bernardomg.example.swss.password.digest.wss4j.WSPasswordDigestWss4jContext;
-import com.bernardomg.example.swss.password.digest.xwss.WSPasswordDigestXwssContext;
-import com.bernardomg.example.swss.password.plain.wss4j.WSPasswordPlainWss4jContext;
-import com.bernardomg.example.swss.password.plain.xwss.WSPasswordPlainXwssContext;
-import com.bernardomg.example.swss.unsecure.WSUnsecureContext;
+import com.bernardomg.example.swss.servlets.password.digest.wss4j.WSPasswordDigestWss4jContext;
+import com.bernardomg.example.swss.servlets.password.digest.xwss.WSPasswordDigestXwssContext;
+import com.bernardomg.example.swss.servlets.password.plain.wss4j.WSPasswordPlainWss4jContext;
+import com.bernardomg.example.swss.servlets.password.plain.xwss.WSPasswordPlainXwssContext;
+import com.bernardomg.example.swss.servlets.unsecure.WSUnsecureContext;
 
 @Configuration
 @EnableConfigurationProperties(WebServicesProperties.class)
