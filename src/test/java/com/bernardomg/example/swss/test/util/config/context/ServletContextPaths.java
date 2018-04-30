@@ -24,14 +24,23 @@
 
 package com.bernardomg.example.swss.test.util.config.context;
 
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
+import org.springframework.core.io.ResourceLoader;
+
+import com.bernardomg.example.swss.main.service.ExampleEntityService;
+import com.bernardomg.example.swss.test.util.factory.WebServiceMockFactory;
+
 /**
  * Paths to the servlet context files.
  * <p>
- * These are the context files shared by all the servlets, not matter their
- * type.
+ * These are the context files shared by all the servlets, not matter their type.
  * <p>
- * These are the same context configurations as the ones used for the
- * application servlets.
+ * These are the same context configurations as the ones used for the application servlets.
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
@@ -40,10 +49,9 @@ public final class ServletContextPaths {
     /**
      * Application-wide context configuration.
      * <p>
-     * This is the application context used for real web services, and shared by
-     * all the servlets.
+     * This is the application context used for real web services, and shared by all the servlets.
      */
-    public static final String APPLICATION        = "classpath:context/web-service.xml";
+    public static final String APPLICATION = "classpath:context/web-service.xml";
 
     /**
      * Mocked application context configuration.
@@ -59,4 +67,26 @@ public final class ServletContextPaths {
         super();
     }
 
+    @Configuration
+    public static class TestWebService {
+
+        @Bean
+        public static PropertySourcesPlaceholderConfigurer placeHolderConfigurer(ResourceLoader loader) {
+            PropertySourcesPlaceholderConfigurer propertyConfigurer = new PropertySourcesPlaceholderConfigurer();
+            propertyConfigurer.setLocations(loader.getResource("classpath:config/test-web-service.properties"));
+            return propertyConfigurer;
+        }
+
+        @Bean
+        public WebServiceMockFactory mocksFactory() throws Exception {
+            return new WebServiceMockFactory();
+        }
+
+        @Bean
+        @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+        public ExampleEntityService exampleEntityService(@Qualifier("mocksFactory") WebServiceMockFactory mocksFactory)
+                throws Exception {
+            return mocksFactory.getExampleEntityService();
+        }
+    }
 }

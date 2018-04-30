@@ -24,6 +24,26 @@
 
 package com.bernardomg.example.swss.test.util.config.context;
 
+import java.util.List;
+
+import javax.security.auth.callback.CallbackHandler;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
+import org.springframework.ws.config.annotation.EnableWs;
+import org.springframework.ws.config.annotation.WsConfigurerAdapter;
+import org.springframework.ws.server.EndpointInterceptor;
+import org.springframework.ws.soap.security.wss4j2.Wss4jSecurityInterceptor;
+
+import com.bernardomg.example.swss.common.WsdlConfig;
+import com.bernardomg.example.swss.password.plain.wss4j.config.PropertiesConfig;
+import com.bernardomg.example.swss.test.util.factory.WebServiceMockFactory;
+
 /**
  * Paths to the WSS4J-based servlet context files.
  * <p>
@@ -77,6 +97,66 @@ public final class ServletWss4jContextPaths {
      */
     private ServletWss4jContextPaths() {
         super();
+    }
+
+    @Configuration
+    @Import({ PropertiesConfig.class, WsdlConfig.class })
+    @ComponentScan("com.bernardomg.example.swss.endpoint")
+    public static class TestServletPasswordPlainWss4j {
+
+        /*
+         * <!-- Scans for endpoints --> <context:component-scan base-package="com.bernardomg.example.swss.endpoint" />
+         * 
+         * <!-- Properties --> <context:property-placeholder location="classpath:config/endpoint/endpoint.properties,
+         * classpath:config/interceptor/password/plain/wss4j/interceptor-password-plain-wss4j.properties,
+         * classpath:config/endpoint/password/plain/wss4j/endpoint-password-plain-wss4j.properties" />
+         * 
+         * <!-- Imports --> <import
+         * resource="classpath:context/endpoint/password/plain/wss4j/test-endpoint-password-plain-wss4j.xml" />
+         * 
+         * 
+         */
+
+        @Configuration
+        @EnableWs
+        public static class WSConfig extends WsConfigurerAdapter {
+
+            @Autowired
+            private Wss4jSecurityInterceptor wss4jSecurityInterceptor;
+            
+            @Override
+            public void addInterceptors(List<EndpointInterceptor> interceptors) {
+                interceptors.add(wss4jSecurityInterceptor);
+            }
+        }
+        
+        @Configuration
+        public static class WSInterceptorConfig {
+
+            @Bean
+            public Wss4jSecurityInterceptor securityInterceptor(@Value("${security.actions}") String securityActions,
+                                                                @Value("${security.credentials.user}") String securityCredentialsUser,
+                                                                @Value("${security.credentials.password}") String securityCredentialsPassword,
+                                                                @Value("${security.credentials.password.type}") String securityCredentialsPasswordType,
+                                                                @Qualifier("validationHandler") CallbackHandler validationHandler) {
+                Wss4jSecurityInterceptor interceptor = new Wss4jSecurityInterceptor();
+                interceptor.setSecurementActions(securityActions);
+                interceptor.setSecurementUsername(securityCredentialsUser);
+                interceptor.setSecurementPassword(securityCredentialsPassword);
+                interceptor.setSecurementPasswordType(securityCredentialsPasswordType);
+                interceptor.setValidationActions(securityActions);
+                interceptor.setValidationCallbackHandler(validationHandler);
+                interceptor.setSecureResponse(false);
+                interceptor.setValidateResponse(false);
+                return interceptor;
+            }
+            
+            @Bean
+            public CallbackHandler validationHandler(@Qualifier("mocksFactory") WebServiceMockFactory mocksFactory) throws Exception {
+                return mocksFactory.getValidationCallbackHandler();
+            }
+        }
+        
     }
 
 }

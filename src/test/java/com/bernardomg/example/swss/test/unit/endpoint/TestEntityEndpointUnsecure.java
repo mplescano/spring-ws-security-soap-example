@@ -31,16 +31,17 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
+import org.springframework.test.context.support.AnnotationConfigContextLoader;
 import org.springframework.ws.test.server.MockWebServiceClient;
 import org.springframework.ws.test.server.RequestCreator;
 import org.springframework.ws.test.server.RequestCreators;
 import org.springframework.ws.test.server.ResponseMatcher;
 import org.springframework.ws.test.server.ResponseMatchers;
 
-import com.bernardomg.example.swss.test.util.config.context.ServletWss4jContextPaths;
 import com.bernardomg.example.swss.test.util.config.properties.EndpointXwssPropertiesPaths;
 import com.bernardomg.example.swss.test.util.config.properties.SoapPropertiesPaths;
 import com.bernardomg.example.swss.test.util.test.unit.endpoint.AbstractTestEndpoint;
+import com.bernardomg.example.swss.unsecure.WSUnsecureContext;
 
 /**
  * Unit tests for an unsecured endpoint testing that it handles payload-based
@@ -54,7 +55,8 @@ import com.bernardomg.example.swss.test.util.test.unit.endpoint.AbstractTestEndp
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
-@ContextConfiguration(locations = { ServletWss4jContextPaths.UNSECURE })
+//@ContextConfiguration(locations = { ServletWss4jContextPaths.UNSECURE })
+@ContextConfiguration(classes = { WSUnsecureContext.class }, loader = AnnotationConfigContextLoader.class)
 @TestPropertySource({ SoapPropertiesPaths.UNSECURE,
         EndpointXwssPropertiesPaths.UNSECURE })
 public final class TestEntityEndpointUnsecure extends AbstractTestEndpoint {

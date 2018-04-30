@@ -27,6 +27,7 @@ package com.bernardomg.example.swss.test.util.test.unit.endpoint;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
+import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
 import com.bernardomg.example.swss.test.util.config.context.ServletContextPaths;
 import com.bernardomg.example.swss.test.util.config.properties.EndpointPropertiesPaths;
@@ -37,7 +38,8 @@ import com.bernardomg.example.swss.test.util.config.properties.TestPropertiesPat
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
-@ContextConfiguration(locations = { ServletContextPaths.APPLICATION_MOCKED })
+//@ContextConfiguration(locations = { ServletContextPaths.APPLICATION_MOCKED })
+@ContextConfiguration(classes = { ServletContextPaths.TestWebService.class }, loader = AnnotationConfigContextLoader.class)
 @TestPropertySource({ TestPropertiesPaths.WSDL,
         EndpointPropertiesPaths.COMMON })
 public abstract class AbstractTestEndpoint
