@@ -40,9 +40,9 @@ import org.springframework.ws.config.annotation.WsConfigurerAdapter;
 import org.springframework.ws.server.EndpointInterceptor;
 import org.springframework.ws.soap.security.wss4j2.Wss4jSecurityInterceptor;
 
-import com.bernardomg.example.swss.servlets.common.WsdlConfig;
-import com.bernardomg.example.swss.servlets.password.digest.wss4j.config.DigestWss4jPropertiesConfig;
-import com.bernardomg.example.swss.servlets.password.plain.wss4j.config.PlainWss4jPropertiesConfig;
+import com.bernardomg.example.swss.servlet.common.WsdlConfig;
+import com.bernardomg.example.swss.servlet.password.digest.wss4j.config.DigestWss4jPropertiesConfig;
+import com.bernardomg.example.swss.servlet.password.plain.wss4j.config.PlainWss4jPropertiesConfig;
 import com.bernardomg.example.swss.test.util.factory.WebServiceMockFactory;
 
 /**

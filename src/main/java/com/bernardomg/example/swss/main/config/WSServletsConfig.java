@@ -9,11 +9,12 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.ws.transport.http.MessageDispatcherServlet;
 
-import com.bernardomg.example.swss.servlets.password.digest.wss4j.WSPasswordDigestWss4jContext;
-import com.bernardomg.example.swss.servlets.password.digest.xwss.WSPasswordDigestXwssContext;
-import com.bernardomg.example.swss.servlets.password.plain.wss4j.WSPasswordPlainWss4jContext;
-import com.bernardomg.example.swss.servlets.password.plain.xwss.WSPasswordPlainXwssContext;
-import com.bernardomg.example.swss.servlets.unsecure.WSUnsecureContext;
+import com.bernardomg.example.swss.servlet.password.digest.wss4j.WSPasswordDigestWss4jContext;
+import com.bernardomg.example.swss.servlet.password.digest.xwss.WSPasswordDigestXwssContext;
+import com.bernardomg.example.swss.servlet.password.plain.wss4j.WSPasswordPlainWss4jContext;
+import com.bernardomg.example.swss.servlet.password.plain.xwss.WSPasswordPlainXwssContext;
+import com.bernardomg.example.swss.servlet.signature.wss4j.WSSignatureWss4jContext;
+import com.bernardomg.example.swss.servlet.unsecure.WSUnsecureContext;
 
 @Configuration
 @EnableConfigurationProperties(WebServicesProperties.class)
@@ -37,6 +38,13 @@ public class WSServletsConfig {
     public ServletRegistrationBean<MessageDispatcherServlet> wsPasswordDigestWss4jServlet(WebServicesProperties properties) {
     	String path = "/password/digest/wss4j/*";
         Class<WSPasswordDigestWss4jContext> classParam = WSPasswordDigestWss4jContext.class;
+        return buildServletRegistration(properties, path, classParam);
+    }
+
+    @Bean
+    public ServletRegistrationBean<MessageDispatcherServlet> wsSignatureWss4jServlet(WebServicesProperties properties) {
+    	String path = "/signature/wss4j/*";
+        Class<WSSignatureWss4jContext> classParam = WSSignatureWss4jContext.class;
         return buildServletRegistration(properties, path, classParam);
     }
     
