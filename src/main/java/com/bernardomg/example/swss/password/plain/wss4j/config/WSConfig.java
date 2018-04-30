@@ -1,4 +1,4 @@
-package com.bernardomg.example.swss.unsecure.config;
+package com.bernardomg.example.swss.password.plain.wss4j.config;
 
 import java.util.List;
 
@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Import;
 import org.springframework.ws.config.annotation.EnableWs;
 import org.springframework.ws.config.annotation.WsConfigurerAdapter;
 import org.springframework.ws.server.EndpointInterceptor;
+import org.springframework.ws.soap.security.wss4j2.Wss4jSecurityInterceptor;
 import org.springframework.ws.soap.server.endpoint.interceptor.PayloadValidatingInterceptor;
 import org.springframework.ws.soap.server.endpoint.interceptor.SoapEnvelopeLoggingInterceptor;
 
@@ -27,9 +28,13 @@ public class WSConfig extends WsConfigurerAdapter {
     @Autowired
     private PayloadValidatingInterceptor payloadValidatingInterceptor;
     
+    @Autowired
+    private Wss4jSecurityInterceptor wss4jSecurityInterceptor;
+    
     @Override
     public void addInterceptors(List<EndpointInterceptor> interceptors) {
         interceptors.add(payloadValidatingInterceptor);
         interceptors.add(soapEnvelopeLoggingInterceptor);
+        interceptors.add(wss4jSecurityInterceptor);
     }
 }
