@@ -25,7 +25,7 @@ public class WSServletsConfig {
         servlet.setTransformWsdlLocations(true);
         servlet.setTransformSchemaLocations(true);
         String path = "/unsecure/*";
-        String urlMapping = (path.endsWith("/") ? path + "*" : path + "/*");
+        String urlMapping = (path.endsWith("/") ? path + "*" : (path.endsWith("/*") ? path : path + "/*"));
         ServletRegistrationBean<MessageDispatcherServlet> registration = new ServletRegistrationBean<>(
                 servlet, urlMapping);
         WebServicesProperties.Servlet servletProperties = properties.getServlet();
@@ -44,7 +44,7 @@ public class WSServletsConfig {
         servlet.setTransformWsdlLocations(true);
         servlet.setTransformSchemaLocations(true);
         String path = "/password/plain/wss4j/*";
-        String urlMapping = (path.endsWith("/") ? path + "*" : path + "/*");
+        String urlMapping = (path.endsWith("/") ? path + "*" : (path.endsWith("/*") ? path : path + "/*"));
         ServletRegistrationBean<MessageDispatcherServlet> registration = new ServletRegistrationBean<>(
                 servlet, urlMapping);
         WebServicesProperties.Servlet servletProperties = properties.getServlet();

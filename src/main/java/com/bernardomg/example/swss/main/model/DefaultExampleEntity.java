@@ -26,8 +26,6 @@ package com.bernardomg.example.swss.main.model;
 
 import java.util.Arrays;
 
-//import static com.google.common.base.internal.Preconditions.checkNotNull;
-
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -37,6 +35,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+
+import com.google.common.base.Preconditions;
 
 /**
  * Persistent entity for the example application.
@@ -122,31 +122,17 @@ public final class DefaultExampleEntity implements ExampleEntity {
 
 	@Override
 	public final void setId(final Integer value) {
-		id = checkNotNull(value, "Received a null pointer as identifier");
+		id = Preconditions.checkNotNull(value, "Received a null pointer as identifier");
 	}
 
 	@Override
 	public final void setName(final String value) {
-		name = checkNotNull(value, "Received a null pointer as name");
+		name = Preconditions.checkNotNull(value, "Received a null pointer as name");
 	}
 
 	@Override
 	public final String toString() {
 		return toStringHelper(this).add("entityId", id).toString();
-	}
-
-	public static <T> T checkNotNull(T reference, Object errorMessage) {
-		if (reference == null) {
-			throw new NullPointerException(String.valueOf(errorMessage));
-		}
-		return reference;
-	}
-
-	public static <T> T checkNotNull(T reference) {
-		if (reference == null) {
-			throw new NullPointerException();
-		}
-		return reference;
 	}
 
 	  public static ToStringHelper toStringHelper(Object self) {
@@ -163,7 +149,7 @@ public final class DefaultExampleEntity implements ExampleEntity {
 		     * Use {@link MoreObjects#toStringHelper(Object)} to create an instance.
 		     */
 		    private ToStringHelper(String className) {
-		      this.className = DefaultExampleEntity.checkNotNull(className);
+		      this.className = Preconditions.checkNotNull(className);
 		    }
 
 		    /**
@@ -285,7 +271,7 @@ public final class DefaultExampleEntity implements ExampleEntity {
 		    private ToStringHelper addHolder(String name, Object value) {
 		      ValueHolder valueHolder = addHolder();
 		      valueHolder.value = value;
-		      valueHolder.name = checkNotNull(name);
+		      valueHolder.name = Preconditions.checkNotNull(name);
 		      return this;
 		    }
 

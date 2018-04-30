@@ -33,7 +33,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.bernardomg.example.swss.main.auth.repository.PersistentUserDetailsRepository;
-import com.bernardomg.example.swss.main.model.DefaultExampleEntity;
+import com.google.common.base.Preconditions;
 
 
 /**
@@ -73,7 +73,7 @@ public final class PersistentUserDetailsService implements UserDetailsService {
             final PersistentUserDetailsRepository userRepository) {
         super();
 
-        userRepo = DefaultExampleEntity.checkNotNull(userRepository,
+        userRepo = Preconditions.checkNotNull(userRepository,
                 "Received a null pointer as repository");
     }
 
