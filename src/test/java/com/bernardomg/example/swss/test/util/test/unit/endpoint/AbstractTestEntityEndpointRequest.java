@@ -126,7 +126,7 @@ public abstract class AbstractTestEntityEndpointRequest
         final ResponseMatcher responseMatcher; // Matcher for the response
 
         // Creates the request
-        requestCreator = RequestCreators.withSoapEnvelope(
+        requestCreator = RequestCreators.withPayload(
                 new ClassPathResource(requestEnvelopeInvalidPath));
 
         // Creates the response matcher

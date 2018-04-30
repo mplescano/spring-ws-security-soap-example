@@ -32,7 +32,7 @@ public class WSInterceptorConfig {
     }
     
     @Bean
-    public SpringSecurityPasswordValidationCallbackHandler validationHandler(UserDetailsService userDetailsService) {
+    public CallbackHandler validationHandler(UserDetailsService userDetailsService) {
         SpringSecurityPasswordValidationCallbackHandler validationHandler = new SpringSecurityPasswordValidationCallbackHandler();
         validationHandler.setUserDetailsService(userDetailsService);
         return validationHandler;
