@@ -48,7 +48,6 @@ import org.springframework.ws.soap.security.xwss.callback.SpringPlainTextPasswor
 import org.springframework.ws.soap.server.endpoint.interceptor.PayloadValidatingInterceptor;
 import org.springframework.ws.soap.server.endpoint.interceptor.SoapEnvelopeLoggingInterceptor;
 
-import com.bernardomg.example.swss.common.EndpointConfig;
 import com.bernardomg.example.swss.common.WsdlConfig;
 import com.bernardomg.example.swss.password.plain.xwss.config.PropertiesConfig;
 import com.bernardomg.example.swss.test.util.factory.WebServiceMockFactory;

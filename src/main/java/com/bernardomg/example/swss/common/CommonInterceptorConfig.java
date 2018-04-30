@@ -8,7 +8,7 @@ import org.springframework.ws.soap.server.endpoint.interceptor.PayloadValidating
 import org.springframework.ws.soap.server.endpoint.interceptor.SoapEnvelopeLoggingInterceptor;
 
 @Configuration
-public class EndpointConfig {
+public class CommonInterceptorConfig {
 
     @Bean
     public SoapEnvelopeLoggingInterceptor soapEnvelopeLoggingInterceptor() {

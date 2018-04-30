@@ -1,4 +1,4 @@
-package com.bernardomg.example.swss.password.plain.wss4j;
+package com.bernardomg.example.swss.password.digest.wss4j;
 
 import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.boot.autoconfigure.AutoConfigurationExcludeFilter;
@@ -16,6 +16,6 @@ import com.bernardomg.example.swss.password.common.wss4j.WSInterceptorConfig;
         @Filter(type = FilterType.CUSTOM, classes = TypeExcludeFilter.class),
         @Filter(type = FilterType.CUSTOM, classes = AutoConfigurationExcludeFilter.class) })
 @Import(value = { WSConfig.class, WSInterceptorConfig.class })
-public class WSPasswordPlainWss4jContext {
+public class WSPasswordDigestWss4jContext {
 
 }

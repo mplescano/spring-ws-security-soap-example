@@ -12,12 +12,12 @@ import org.springframework.ws.server.EndpointInterceptor;
 import org.springframework.ws.soap.server.endpoint.interceptor.PayloadValidatingInterceptor;
 import org.springframework.ws.soap.server.endpoint.interceptor.SoapEnvelopeLoggingInterceptor;
 
-import com.bernardomg.example.swss.common.EndpointConfig;
+import com.bernardomg.example.swss.common.CommonInterceptorConfig;
 import com.bernardomg.example.swss.common.WsdlConfig;
 
 @Configuration
 @EnableWs
-@Import(value = { WsdlConfig.class, EndpointConfig.class })
+@Import(value = { WsdlConfig.class, CommonInterceptorConfig.class })
 @ComponentScan("com.bernardomg.example.swss.endpoint")
 public class WSConfig extends WsConfigurerAdapter {
 
