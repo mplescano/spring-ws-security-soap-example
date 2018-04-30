@@ -10,6 +10,7 @@ import org.springframework.web.context.support.AnnotationConfigWebApplicationCon
 import org.springframework.ws.transport.http.MessageDispatcherServlet;
 
 import com.bernardomg.example.swss.password.plain.wss4j.WSPasswordPlainWss4jContext;
+import com.bernardomg.example.swss.password.plain.xwss.WSPasswordPlainXwssContext;
 import com.bernardomg.example.swss.unsecure.WSUnsecureContext;
 
 @Configuration
@@ -18,39 +19,40 @@ public class WSServletsConfig {
 
     @Bean
     public ServletRegistrationBean<MessageDispatcherServlet> wsUnsecureServlet(WebServicesProperties properties) {
-        AnnotationConfigWebApplicationContext wsServletContext = new AnnotationConfigWebApplicationContext();
-        wsServletContext.register(WSUnsecureContext.class);
-        MessageDispatcherServlet servlet = new MessageDispatcherServlet(wsServletContext);//TODO
-        //servlet.setApplicationContext(applicationContext);
-        servlet.setTransformWsdlLocations(true);
-        servlet.setTransformSchemaLocations(true);
         String path = "/unsecure/*";
-        String urlMapping = (path.endsWith("/") ? path + "*" : (path.endsWith("/*") ? path : path + "/*"));
-        ServletRegistrationBean<MessageDispatcherServlet> registration = new ServletRegistrationBean<>(
-                servlet, urlMapping);
-        WebServicesProperties.Servlet servletProperties = properties.getServlet();
-        registration.setLoadOnStartup(servletProperties.getLoadOnStartup());
-        servletProperties.getInit().forEach(registration::addInitParameter);
-        registration.setName(WSUnsecureContext.class.getCanonicalName());
-        return registration;
+        Class<WSUnsecureContext> classParam = WSUnsecureContext.class;
+        return buildServletRegistration(properties, path, classParam);
+    }
+
+    @Bean
+    public ServletRegistrationBean<MessageDispatcherServlet> wsPasswordPlainWss4jServlet(WebServicesProperties properties) {
+    	String path = "/password/plain/wss4j/*";
+        Class<WSPasswordPlainWss4jContext> classParam = WSPasswordPlainWss4jContext.class;
+        return buildServletRegistration(properties, path, classParam);
     }
     
     @Bean
-    public ServletRegistrationBean<MessageDispatcherServlet> wsPasswordPlainWss4jServlet(WebServicesProperties properties) {
-        AnnotationConfigWebApplicationContext wsServletContext = new AnnotationConfigWebApplicationContext();
-        wsServletContext.register(WSPasswordPlainWss4jContext.class);
-        MessageDispatcherServlet servlet = new MessageDispatcherServlet(wsServletContext);//TODO
-        //servlet.setApplicationContext(applicationContext);
+    public ServletRegistrationBean<MessageDispatcherServlet> wsPasswordPlainXwssServlet(WebServicesProperties properties) {
+    	String path = "/password/plain/xwss/*";
+        Class<WSPasswordPlainXwssContext> classParam = WSPasswordPlainXwssContext.class;
+        return buildServletRegistration(properties, path, classParam);
+    }
+    
+	private ServletRegistrationBean<MessageDispatcherServlet> buildServletRegistration(
+			WebServicesProperties properties, String path,
+			Class<?> classParam) {
+		AnnotationConfigWebApplicationContext wsServletContext = new AnnotationConfigWebApplicationContext();
+        wsServletContext.register(classParam);
+        MessageDispatcherServlet servlet = new MessageDispatcherServlet(wsServletContext);
         servlet.setTransformWsdlLocations(true);
         servlet.setTransformSchemaLocations(true);
-        String path = "/password/plain/wss4j/*";
         String urlMapping = (path.endsWith("/") ? path + "*" : (path.endsWith("/*") ? path : path + "/*"));
         ServletRegistrationBean<MessageDispatcherServlet> registration = new ServletRegistrationBean<>(
                 servlet, urlMapping);
         WebServicesProperties.Servlet servletProperties = properties.getServlet();
         registration.setLoadOnStartup(servletProperties.getLoadOnStartup());
         servletProperties.getInit().forEach(registration::addInitParameter);
-        registration.setName(WSPasswordPlainWss4jContext.class.getCanonicalName());
+        registration.setName(classParam.getCanonicalName());
         return registration;
-    }
+	}
 }

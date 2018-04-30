@@ -45,8 +45,6 @@ import com.bernardomg.example.swss.test.util.test.unit.endpoint.AbstractTestEnti
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
-/*@ContextConfiguration(
-        locations = { ServletWss4jContextPaths.PASSWORD_PLAIN_MOCKED })*/
 @ContextConfiguration(classes = { ServletWss4jContextPaths.TestServletPasswordPlainWss4j.class }, loader = AnnotationConfigContextLoader.class)
 @TestPropertySource({ SoapPropertiesPaths.PASSWORD_PLAIN,
         InterceptorWss4jPropertiesPaths.PASSWORD_PLAIN,

@@ -104,19 +104,6 @@ public final class ServletWss4jContextPaths {
     @ComponentScan("com.bernardomg.example.swss.endpoint")
     public static class TestServletPasswordPlainWss4j {
 
-        /*
-         * <!-- Scans for endpoints --> <context:component-scan base-package="com.bernardomg.example.swss.endpoint" />
-         * 
-         * <!-- Properties --> <context:property-placeholder location="classpath:config/endpoint/endpoint.properties,
-         * classpath:config/interceptor/password/plain/wss4j/interceptor-password-plain-wss4j.properties,
-         * classpath:config/endpoint/password/plain/wss4j/endpoint-password-plain-wss4j.properties" />
-         * 
-         * <!-- Imports --> <import
-         * resource="classpath:context/endpoint/password/plain/wss4j/test-endpoint-password-plain-wss4j.xml" />
-         * 
-         * 
-         */
-
         @Configuration
         @EnableWs
         public static class WSConfig extends WsConfigurerAdapter {

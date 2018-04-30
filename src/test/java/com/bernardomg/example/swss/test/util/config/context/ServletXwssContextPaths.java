@@ -24,6 +24,36 @@
 
 package com.bernardomg.example.swss.test.util.config.context;
 
+import java.util.Arrays;
+import java.util.List;
+
+import javax.security.auth.callback.CallbackHandler;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
+import org.springframework.core.io.Resource;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.ProviderManager;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.ws.config.annotation.EnableWs;
+import org.springframework.ws.config.annotation.WsConfigurerAdapter;
+import org.springframework.ws.server.EndpointInterceptor;
+import org.springframework.ws.soap.security.xwss.XwsSecurityInterceptor;
+import org.springframework.ws.soap.security.xwss.callback.SpringPlainTextPasswordValidationCallbackHandler;
+import org.springframework.ws.soap.server.endpoint.interceptor.PayloadValidatingInterceptor;
+import org.springframework.ws.soap.server.endpoint.interceptor.SoapEnvelopeLoggingInterceptor;
+
+import com.bernardomg.example.swss.common.EndpointConfig;
+import com.bernardomg.example.swss.common.WsdlConfig;
+import com.bernardomg.example.swss.password.plain.xwss.config.PropertiesConfig;
+import com.bernardomg.example.swss.test.util.factory.WebServiceMockFactory;
+import com.sun.xml.wss.impl.callback.PasswordValidationCallback.PasswordValidationException;
+
 /**
  * Paths to the XWSS-based servlet context files.
  * <p>
@@ -79,4 +109,41 @@ public final class ServletXwssContextPaths {
         super();
     }
 
+    @Configuration
+    @Import({ PropertiesConfig.class, WsdlConfig.class })
+    @ComponentScan("com.bernardomg.example.swss.endpoint")
+    public static class TestServletPasswordPlainXwss {
+ 
+    	@Configuration
+    	public static class WSInterceptorConfig {
+
+    		@Bean
+    		public XwsSecurityInterceptor securityInterceptor(
+    				@Value("${security.file.path}") Resource securityFilePath,
+    				CallbackHandler validationHandler) {
+    			XwsSecurityInterceptor interceptor = new XwsSecurityInterceptor();
+    			interceptor.setPolicyConfiguration(securityFilePath);
+    			interceptor.setCallbackHandlers(new CallbackHandler[] { validationHandler });
+    			return interceptor;
+    		}
+
+    		@Bean
+    		public CallbackHandler validationHandler(WebServiceMockFactory mocksFactory) throws Exception {
+    			return mocksFactory.getValidationCallbackHandler();
+    		}
+    	}
+    	
+    	@Configuration
+    	@EnableWs
+    	public class WSConfig extends WsConfigurerAdapter {
+
+    	    @Autowired
+    	    private XwsSecurityInterceptor securityInterceptor;
+    	    
+    	    @Override
+    	    public void addInterceptors(List<EndpointInterceptor> interceptors) {
+    	        interceptors.add(securityInterceptor);
+    	    }
+    	}
+    }
 }

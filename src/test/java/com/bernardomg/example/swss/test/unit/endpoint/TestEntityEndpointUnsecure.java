@@ -55,7 +55,6 @@ import com.bernardomg.example.swss.unsecure.WSUnsecureContext;
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
-//@ContextConfiguration(locations = { ServletWss4jContextPaths.UNSECURE })
 @ContextConfiguration(classes = { WSUnsecureContext.class }, loader = AnnotationConfigContextLoader.class)
 @TestPropertySource({ SoapPropertiesPaths.UNSECURE,
         EndpointXwssPropertiesPaths.UNSECURE })
