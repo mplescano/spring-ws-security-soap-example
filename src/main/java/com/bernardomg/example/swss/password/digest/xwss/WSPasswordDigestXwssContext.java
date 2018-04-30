@@ -1,4 +1,4 @@
-package com.bernardomg.example.swss.password.plain.xwss;
+package com.bernardomg.example.swss.password.digest.xwss;
 
 import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.boot.autoconfigure.AutoConfigurationExcludeFilter;
@@ -15,6 +15,6 @@ import com.bernardomg.example.swss.password.common.xwss.WSXwssConfig;
         @Filter(type = FilterType.CUSTOM, classes = TypeExcludeFilter.class),
         @Filter(type = FilterType.CUSTOM, classes = AutoConfigurationExcludeFilter.class) })
 @Import(value = { WSXwssConfig.class })
-public class WSPasswordPlainXwssContext {
+public class WSPasswordDigestXwssContext {
 
 }

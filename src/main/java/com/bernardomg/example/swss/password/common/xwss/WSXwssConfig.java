@@ -1,4 +1,4 @@
-package com.bernardomg.example.swss.password.common.wss4j;
+package com.bernardomg.example.swss.password.common.xwss;
 
 import java.util.List;
 
@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Import;
 import org.springframework.ws.config.annotation.EnableWs;
 import org.springframework.ws.config.annotation.WsConfigurerAdapter;
 import org.springframework.ws.server.EndpointInterceptor;
-import org.springframework.ws.soap.security.wss4j2.Wss4jSecurityInterceptor;
+import org.springframework.ws.soap.security.xwss.XwsSecurityInterceptor;
 import org.springframework.ws.soap.server.endpoint.interceptor.PayloadValidatingInterceptor;
 import org.springframework.ws.soap.server.endpoint.interceptor.SoapEnvelopeLoggingInterceptor;
 
@@ -20,7 +20,7 @@ import com.bernardomg.example.swss.common.WsdlConfig;
 @EnableWs
 @Import(value = { WsdlConfig.class, CommonInterceptorConfig.class })
 @ComponentScan("com.bernardomg.example.swss.endpoint")
-public class WSConfig extends WsConfigurerAdapter {
+public class WSXwssConfig extends WsConfigurerAdapter {
 
     @Autowired
     private SoapEnvelopeLoggingInterceptor soapEnvelopeLoggingInterceptor;
@@ -29,7 +29,7 @@ public class WSConfig extends WsConfigurerAdapter {
     private PayloadValidatingInterceptor payloadValidatingInterceptor;
     
     @Autowired
-    private Wss4jSecurityInterceptor securityInterceptor;
+    private XwsSecurityInterceptor securityInterceptor;
     
     @Override
     public void addInterceptors(List<EndpointInterceptor> interceptors) {

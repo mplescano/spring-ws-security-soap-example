@@ -8,14 +8,14 @@ import org.springframework.context.annotation.FilterType;
 import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.ComponentScan.Filter;
 
-import com.bernardomg.example.swss.password.common.wss4j.WSConfig;
+import com.bernardomg.example.swss.password.common.wss4j.WSWss4jConfig;
 import com.bernardomg.example.swss.password.common.wss4j.WSInterceptorConfig;
 
 @SpringBootConfiguration
 @ComponentScan(excludeFilters = {
         @Filter(type = FilterType.CUSTOM, classes = TypeExcludeFilter.class),
         @Filter(type = FilterType.CUSTOM, classes = AutoConfigurationExcludeFilter.class) })
-@Import(value = { WSConfig.class, WSInterceptorConfig.class })
+@Import(value = { WSWss4jConfig.class, WSInterceptorConfig.class })
 public class WSPasswordPlainWss4jContext {
 
 }

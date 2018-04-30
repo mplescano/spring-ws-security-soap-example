@@ -10,6 +10,7 @@ import org.springframework.web.context.support.AnnotationConfigWebApplicationCon
 import org.springframework.ws.transport.http.MessageDispatcherServlet;
 
 import com.bernardomg.example.swss.password.digest.wss4j.WSPasswordDigestWss4jContext;
+import com.bernardomg.example.swss.password.digest.xwss.WSPasswordDigestXwssContext;
 import com.bernardomg.example.swss.password.plain.wss4j.WSPasswordPlainWss4jContext;
 import com.bernardomg.example.swss.password.plain.xwss.WSPasswordPlainXwssContext;
 import com.bernardomg.example.swss.unsecure.WSUnsecureContext;
@@ -43,6 +44,13 @@ public class WSServletsConfig {
     public ServletRegistrationBean<MessageDispatcherServlet> wsPasswordPlainXwssServlet(WebServicesProperties properties) {
     	String path = "/password/plain/xwss/*";
         Class<WSPasswordPlainXwssContext> classParam = WSPasswordPlainXwssContext.class;
+        return buildServletRegistration(properties, path, classParam);
+    }
+
+    @Bean
+    public ServletRegistrationBean<MessageDispatcherServlet> wsPasswordDigestXwssServlet(WebServicesProperties properties) {
+    	String path = "/password/digest/xwss/*";
+        Class<WSPasswordDigestXwssContext> classParam = WSPasswordDigestXwssContext.class;
         return buildServletRegistration(properties, path, classParam);
     }
     

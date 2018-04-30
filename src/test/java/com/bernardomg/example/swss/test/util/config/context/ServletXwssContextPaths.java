@@ -49,7 +49,8 @@ import org.springframework.ws.soap.server.endpoint.interceptor.PayloadValidating
 import org.springframework.ws.soap.server.endpoint.interceptor.SoapEnvelopeLoggingInterceptor;
 
 import com.bernardomg.example.swss.common.WsdlConfig;
-import com.bernardomg.example.swss.password.plain.xwss.config.PropertiesConfig;
+import com.bernardomg.example.swss.password.digest.xwss.config.DigestXwssPropertiesConfig;
+import com.bernardomg.example.swss.password.plain.xwss.config.PlainXwssPropertiesConfig;
 import com.bernardomg.example.swss.test.util.factory.WebServiceMockFactory;
 import com.sun.xml.wss.impl.callback.PasswordValidationCallback.PasswordValidationException;
 
@@ -107,12 +108,8 @@ public final class ServletXwssContextPaths {
     private ServletXwssContextPaths() {
         super();
     }
-
-    @Configuration
-    @Import({ PropertiesConfig.class, WsdlConfig.class })
-    @ComponentScan("com.bernardomg.example.swss.endpoint")
-    public static class TestServletPasswordPlainXwss {
- 
+    
+    public static class CommonTestServletPasswordXwss {
     	@Configuration
     	public static class WSInterceptorConfig {
 
@@ -144,5 +141,17 @@ public final class ServletXwssContextPaths {
     	        interceptors.add(securityInterceptor);
     	    }
     	}
+    }
+    
+    @Configuration
+    @Import({ DigestXwssPropertiesConfig.class, WsdlConfig.class })
+    @ComponentScan("com.bernardomg.example.swss.endpoint")
+    public static class TestServletPasswordDigestXwss extends CommonTestServletPasswordXwss {
+    }
+
+    @Configuration
+    @Import({ PlainXwssPropertiesConfig.class, WsdlConfig.class })
+    @ComponentScan("com.bernardomg.example.swss.endpoint")
+    public static class TestServletPasswordPlainXwss extends CommonTestServletPasswordXwss {
     }
 }

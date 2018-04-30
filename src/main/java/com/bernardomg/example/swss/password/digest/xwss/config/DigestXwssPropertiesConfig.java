@@ -1,4 +1,4 @@
-package com.bernardomg.example.swss.password.plain.xwss.config;
+package com.bernardomg.example.swss.password.digest.xwss.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -6,7 +6,7 @@ import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.core.io.ResourceLoader;
 
 @Configuration
-public class PropertiesConfig {
+public class DigestXwssPropertiesConfig {
 
 	@Bean
 	public static PropertySourcesPlaceholderConfigurer placeHolderConfigurer(
@@ -15,9 +15,9 @@ public class PropertiesConfig {
 		propertyConfigurer.setLocations(
 				loader.getResource("classpath:config/endpoint/endpoint.properties"),
 				loader.getResource(
-						"classpath:config/interceptor/password/plain/xwss/interceptor-password-plain-xwss.properties"),
+						"classpath:config/interceptor/password/digest/xwss/interceptor-password-digest-xwss.properties"),
                 loader.getResource(
-                        "classpath:config/endpoint/password/plain/xwss/endpoint-password-plain-xwss.properties"));
+                        "classpath:config/endpoint/password/digest/xwss/endpoint-password-digest-xwss.properties"));
 		return propertyConfigurer;
 	}
 
