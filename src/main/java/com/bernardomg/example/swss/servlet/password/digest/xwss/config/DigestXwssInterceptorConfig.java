@@ -11,7 +11,7 @@ import org.springframework.ws.soap.security.xwss.XwsSecurityInterceptor;
 import org.springframework.ws.soap.security.xwss.callback.SpringDigestPasswordValidationCallbackHandler;
 
 @Configuration
-public class WSInterceptorConfig {
+public class DigestXwssInterceptorConfig {
 
 	@Bean
 	public XwsSecurityInterceptor securityInterceptor(

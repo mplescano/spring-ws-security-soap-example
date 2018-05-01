@@ -31,9 +31,11 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
+import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
-import com.bernardomg.example.swss.test.util.config.context.ServletWss4jContextPaths;
-import com.bernardomg.example.swss.test.util.config.context.TestContextPaths;
+import com.bernardomg.example.swss.main.config.KeyStoreConfig;
+import com.bernardomg.example.swss.main.config.Wss4jCryptoConfig;
+import com.bernardomg.example.swss.servlet.encryption.wss4j.WSEncryptionWss4jContext;
 import com.bernardomg.example.swss.test.util.config.properties.EndpointWss4jPropertiesPaths;
 import com.bernardomg.example.swss.test.util.config.properties.InterceptorWss4jPropertiesPaths;
 import com.bernardomg.example.swss.test.util.config.properties.SoapPropertiesPaths;
@@ -46,8 +48,8 @@ import com.bernardomg.example.swss.test.util.test.unit.endpoint.AbstractTestEnti
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
-@ContextConfiguration(locations = { ServletWss4jContextPaths.ENCRYPTION,
-        TestContextPaths.KEYSTORE, TestContextPaths.KEYSTORE_WSS4J })
+@ContextConfiguration(classes = { WSEncryptionWss4jContext.class, KeyStoreConfig.class, Wss4jCryptoConfig.class }, 
+    loader = AnnotationConfigContextLoader.class)
 @TestPropertySource({ SoapPropertiesPaths.UNSECURE,
         SoapPropertiesPaths.ENCRYPTION_WSS4J,
         InterceptorWss4jPropertiesPaths.ENCRYPTION,

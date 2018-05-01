@@ -1,4 +1,4 @@
-package com.bernardomg.example.swss.servlet.password.common.wss4j;
+package com.bernardomg.example.swss.servlet.password.common;
 
 import javax.security.auth.callback.CallbackHandler;
 

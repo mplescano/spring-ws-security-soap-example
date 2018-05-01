@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.ComponentScan.Filter;
 
 import com.bernardomg.example.swss.servlet.common.WSWss4jConfig;
-import com.bernardomg.example.swss.servlet.password.common.wss4j.WSWss4jInterceptorConfig;
+import com.bernardomg.example.swss.servlet.password.common.WSWss4jInterceptorConfig;
 
 @SpringBootConfiguration
 @ComponentScan(excludeFilters = {

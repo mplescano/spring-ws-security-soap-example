@@ -117,7 +117,7 @@
 		<dependency>
 			<groupId>com.sun.xml.wss</groupId>
 			<artifactId>xws-security</artifactId>
-			<version>3.0</version>
+			<version>3.0-patched</version>
 			<exclusions>
 				<exclusion>
 					<groupId>javax.xml.crypto</groupId>

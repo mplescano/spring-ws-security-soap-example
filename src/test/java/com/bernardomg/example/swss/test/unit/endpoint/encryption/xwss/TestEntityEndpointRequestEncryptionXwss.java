@@ -31,9 +31,10 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
+import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
-import com.bernardomg.example.swss.test.util.config.context.ServletXwssContextPaths;
-import com.bernardomg.example.swss.test.util.config.context.TestContextPaths;
+import com.bernardomg.example.swss.main.config.KeyStoreConfig;
+import com.bernardomg.example.swss.servlet.encryption.xwss.WSEncryptionXwssContext;
 import com.bernardomg.example.swss.test.util.config.properties.EndpointXwssPropertiesPaths;
 import com.bernardomg.example.swss.test.util.config.properties.InterceptorXwssPropertiesPaths;
 import com.bernardomg.example.swss.test.util.config.properties.SoapPropertiesPaths;
@@ -46,8 +47,8 @@ import com.bernardomg.example.swss.test.util.test.unit.endpoint.AbstractTestEnti
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
-@ContextConfiguration(locations = { ServletXwssContextPaths.ENCRYPTION,
-        TestContextPaths.KEYSTORE })
+@ContextConfiguration(classes = { WSEncryptionXwssContext.class, KeyStoreConfig.class }, 
+    loader = AnnotationConfigContextLoader.class)
 @TestPropertySource({ SoapPropertiesPaths.UNSECURE,
         SoapPropertiesPaths.ENCRYPTION_XWSS,
         InterceptorXwssPropertiesPaths.ENCRYPTION,

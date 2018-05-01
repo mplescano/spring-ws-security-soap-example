@@ -24,7 +24,6 @@
 
 package com.bernardomg.example.swss.test.util.config.context;
 
-import java.util.Arrays;
 import java.util.List;
 
 import javax.security.auth.callback.CallbackHandler;
@@ -36,23 +35,15 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.core.io.Resource;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.ProviderManager;
-import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.ws.config.annotation.EnableWs;
 import org.springframework.ws.config.annotation.WsConfigurerAdapter;
 import org.springframework.ws.server.EndpointInterceptor;
 import org.springframework.ws.soap.security.xwss.XwsSecurityInterceptor;
-import org.springframework.ws.soap.security.xwss.callback.SpringPlainTextPasswordValidationCallbackHandler;
-import org.springframework.ws.soap.server.endpoint.interceptor.PayloadValidatingInterceptor;
-import org.springframework.ws.soap.server.endpoint.interceptor.SoapEnvelopeLoggingInterceptor;
 
 import com.bernardomg.example.swss.servlet.common.WsdlConfig;
 import com.bernardomg.example.swss.servlet.password.digest.xwss.config.DigestXwssPropertiesConfig;
 import com.bernardomg.example.swss.servlet.password.plain.xwss.config.PlainXwssPropertiesConfig;
 import com.bernardomg.example.swss.test.util.factory.WebServiceMockFactory;
-import com.sun.xml.wss.impl.callback.PasswordValidationCallback.PasswordValidationException;
 
 /**
  * Paths to the XWSS-based servlet context files.

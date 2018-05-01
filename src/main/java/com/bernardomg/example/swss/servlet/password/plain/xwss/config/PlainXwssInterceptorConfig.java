@@ -16,7 +16,7 @@ import org.springframework.ws.soap.security.xwss.XwsSecurityInterceptor;
 import org.springframework.ws.soap.security.xwss.callback.SpringPlainTextPasswordValidationCallbackHandler;
 
 @Configuration
-public class WSInterceptorConfig {
+public class PlainXwssInterceptorConfig {
 
 	@Bean
 	public XwsSecurityInterceptor securityInterceptor(

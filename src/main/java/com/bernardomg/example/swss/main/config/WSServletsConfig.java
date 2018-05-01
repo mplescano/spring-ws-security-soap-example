@@ -10,6 +10,7 @@ import org.springframework.web.context.support.AnnotationConfigWebApplicationCon
 import org.springframework.ws.transport.http.MessageDispatcherServlet;
 
 import com.bernardomg.example.swss.servlet.encryption.wss4j.WSEncryptionWss4jContext;
+import com.bernardomg.example.swss.servlet.encryption.xwss.WSEncryptionXwssContext;
 import com.bernardomg.example.swss.servlet.password.digest.wss4j.WSPasswordDigestWss4jContext;
 import com.bernardomg.example.swss.servlet.password.digest.xwss.WSPasswordDigestXwssContext;
 import com.bernardomg.example.swss.servlet.password.plain.wss4j.WSPasswordPlainWss4jContext;
@@ -75,6 +76,13 @@ public class WSServletsConfig {
     public ServletRegistrationBean<MessageDispatcherServlet> wsSignatureXwssServlet(WebServicesProperties properties) {
         String path = "/signature/xwss/*";
         Class<WSSignatureXwssContext> classParam = WSSignatureXwssContext.class;
+        return buildServletRegistration(properties, path, classParam);
+    }
+    
+    @Bean
+    public ServletRegistrationBean<MessageDispatcherServlet> wsEncryptionXwssServlet(WebServicesProperties properties) {
+        String path = "/encryption/xwss/*";
+        Class<WSEncryptionXwssContext> classParam = WSEncryptionXwssContext.class;
         return buildServletRegistration(properties, path, classParam);
     }
     
