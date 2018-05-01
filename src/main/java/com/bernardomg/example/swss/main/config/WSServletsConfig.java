@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.ws.transport.http.MessageDispatcherServlet;
 
+import com.bernardomg.example.swss.servlet.encryption.wss4j.WSEncryptionWss4jContext;
 import com.bernardomg.example.swss.servlet.password.digest.wss4j.WSPasswordDigestWss4jContext;
 import com.bernardomg.example.swss.servlet.password.digest.xwss.WSPasswordDigestXwssContext;
 import com.bernardomg.example.swss.servlet.password.plain.wss4j.WSPasswordPlainWss4jContext;
@@ -48,11 +49,11 @@ public class WSServletsConfig {
         Class<WSSignatureWss4jContext> classParam = WSSignatureWss4jContext.class;
         return buildServletRegistration(properties, path, classParam);
     }
-    
+
     @Bean
-    public ServletRegistrationBean<MessageDispatcherServlet> wsSignatureXwssServlet(WebServicesProperties properties) {
-    	String path = "/signature/xwss/*";
-        Class<WSSignatureXwssContext> classParam = WSSignatureXwssContext.class;
+    public ServletRegistrationBean<MessageDispatcherServlet> wsEncryptionWss4jServlet(WebServicesProperties properties) {
+        String path = "/encryption/wss4j/*";
+        Class<WSEncryptionWss4jContext> classParam = WSEncryptionWss4jContext.class;
         return buildServletRegistration(properties, path, classParam);
     }
     
@@ -67,6 +68,13 @@ public class WSServletsConfig {
     public ServletRegistrationBean<MessageDispatcherServlet> wsPasswordDigestXwssServlet(WebServicesProperties properties) {
     	String path = "/password/digest/xwss/*";
         Class<WSPasswordDigestXwssContext> classParam = WSPasswordDigestXwssContext.class;
+        return buildServletRegistration(properties, path, classParam);
+    }
+    
+    @Bean
+    public ServletRegistrationBean<MessageDispatcherServlet> wsSignatureXwssServlet(WebServicesProperties properties) {
+        String path = "/signature/xwss/*";
+        Class<WSSignatureXwssContext> classParam = WSSignatureXwssContext.class;
         return buildServletRegistration(properties, path, classParam);
     }
     

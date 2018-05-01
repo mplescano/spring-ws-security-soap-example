@@ -17,7 +17,7 @@ import org.springframework.ws.soap.security.xwss.XwsSecurityInterceptor;
 import org.springframework.ws.soap.security.xwss.callback.SpringCertificateValidationCallbackHandler;
 
 @Configuration
-public class WSInterceptorConfig {
+public class SignatureXwssInterceptorConfig {
 
 	@Bean
 	public XwsSecurityInterceptor securityInterceptor(
