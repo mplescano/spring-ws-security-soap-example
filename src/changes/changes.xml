@@ -3,6 +3,7 @@
    <properties>
       <title>Project Changes</title>
       <author email="programming@bernardomg.com">Bernardo Martínez Garrido</author>
+      <author email="mplescano@">mplescano</author>
    </properties>
    <body>
       <release version="1.0.0" date="2016-03-26" description="First version">
@@ -142,6 +143,11 @@
       <release version="1.3.0" date="2017-11-26" description="Relocation">
          <action dev="bmg" type="update">
             Relocation.
+         </action>
+      </release>
+      <release version="2.0.0" date="2018-05-02" description="Migration">
+         <action dev="mplescano" type="update">
+            Migration to spring boot 2.0 and java 8.0
          </action>
       </release>
    </body>
