@@ -10,7 +10,7 @@
    </description>
 
    <!-- Properties -->
-   <context:property-placeholder
+   <context:property-placeholder ignore-unresolvable="true"
       location="classpath:config/client/client.properties" />
 
    <!-- Imports base context -->

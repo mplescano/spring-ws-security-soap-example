@@ -16,7 +16,7 @@
    </description>
 
    <!-- Properties -->
-   <context:property-placeholder
+   <context:property-placeholder ignore-unresolvable="true"
       location="classpath:config/client/client.properties, 
          config/keystore/keystore.properties, 
          classpath:config/interceptor/encryption/wss4j/interceptor-encryption-wss4j.properties, 
@@ -24,9 +24,13 @@
 
    <!-- Imports base context -->
    <import resource="classpath:context/client/client.xml" />
-   <!-- Imports interceptor -->
+   <!-- Imports interceptor
    <import
       resource="classpath:context/interceptor/encryption/wss4j/interceptor-encryption-wss4j.xml" />
+   -->
+	<context:annotation-config />
+	<bean
+		class="com.bernardomg.example.swss.servlet.encryption.wss4j.config.EncryptionWss4jInterceptorConfig" />
    <!-- Imports key store -->
    <import resource="classpath:context/keystore/keystore.xml" />
    <import resource="classpath:context/keystore/keystore-wss4j.xml" />

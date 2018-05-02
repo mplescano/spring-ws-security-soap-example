@@ -215,7 +215,7 @@ public final class ConsoleClient {
                 "context/client/encryption/xwss/client-encryption-xwss.xml"));
         clients.put(Security.ENCRYPTION_WSS4J, getEntityClient(
                 "context/client/encryption/wss4j/client-encryption-wss4j.xml"));
-
+        
         return clients;
     }
 

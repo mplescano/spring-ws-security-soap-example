@@ -14,7 +14,7 @@
    </description>
 
    <!-- Properties -->
-   <context:property-placeholder
+   <context:property-placeholder ignore-unresolvable="true"
       location="classpath:config/client/client.properties, 
          config/keystore/keystore.properties, 
          classpath:config/interceptor/signature/xwss/interceptor-signature-xwss.properties, 
@@ -23,9 +23,14 @@
 
    <!-- Imports base context -->
    <import resource="classpath:context/client/client.xml" />
-   <!-- Imports interceptor -->
+   <!-- Imports interceptor
    <import
       resource="classpath:context/interceptor/signature/xwss/interceptor-signature-xwss.xml" />
+   -->
+	<context:annotation-config />
+	<bean
+		class="com.bernardomg.example.swss.servlet.signature.xwss.config.SignatureXwssInterceptorConfig" />
+
    <!-- Imports key store -->
    <import resource="classpath:context/keystore/keystore.xml" />
 
@@ -35,6 +40,6 @@
    <!-- Imports persistence configuration -->
    <import resource="classpath:context/persistence.xml" />
    <!-- Scans for security services -->
-   <context:component-scan base-package="com.bernardomg.example.swss.auth.service" />
+   <context:component-scan base-package="com.bernardomg.example.swss.main.auth.service" />
 
 </beans>
