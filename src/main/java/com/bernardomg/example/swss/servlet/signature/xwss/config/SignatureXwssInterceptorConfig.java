@@ -1,9 +1,11 @@
 package com.bernardomg.example.swss.servlet.signature.xwss.config;
 
+import java.security.KeyStore;
 import java.util.Arrays;
 
 import javax.security.auth.callback.CallbackHandler;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,6 +16,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.ws.soap.security.x509.X509AuthenticationProvider;
 import org.springframework.ws.soap.security.x509.populator.DaoX509AuthoritiesPopulator;
 import org.springframework.ws.soap.security.xwss.XwsSecurityInterceptor;
+import org.springframework.ws.soap.security.xwss.callback.KeyStoreCallbackHandler;
 import org.springframework.ws.soap.security.xwss.callback.SpringCertificateValidationCallbackHandler;
 
 @Configuration
@@ -22,7 +25,7 @@ public class SignatureXwssInterceptorConfig {
 	@Bean
 	public XwsSecurityInterceptor securityInterceptor(
 			@Value("${security.file.path}") Resource securityFilePath,
-			CallbackHandler validationHandler) {
+			@Qualifier("validationHandler") CallbackHandler validationHandler) {
 		XwsSecurityInterceptor interceptor = new XwsSecurityInterceptor();
 		interceptor.setPolicyConfiguration(securityFilePath);
 		interceptor.setCallbackHandlers(new CallbackHandler[] { validationHandler });
@@ -30,10 +33,23 @@ public class SignatureXwssInterceptorConfig {
 	}
 
 	@Bean
-	public CallbackHandler validationHandler(AuthenticationManager authenticationManager) {
-		SpringCertificateValidationCallbackHandler validationHandler = new SpringCertificateValidationCallbackHandler();
-		validationHandler.setAuthenticationManager(authenticationManager);
+	public CallbackHandler validationHandler(@Qualifier("keyStore") KeyStore keyStore, 
+	                                         @Qualifier("trustStore") KeyStore trustStore,
+	                                         @Value("${keystore.password}") String keystorePassword,
+	                                         @Value("${keystore.alias}") String keystoreAlias) {
+	    KeyStoreCallbackHandler validationHandler = new KeyStoreCallbackHandler();
+		validationHandler.setKeyStore(keyStore);
+		validationHandler.setTrustStore(trustStore);
+		validationHandler.setPrivateKeyPassword(keystorePassword);
+		validationHandler.setDefaultAlias(keystoreAlias);
 		return validationHandler;
+	}
+	
+	/*
+	public SpringCertificateValidationCallbackHandler certificateHandler(AuthenticationManager authenticationManager) {
+	    SpringCertificateValidationCallbackHandler certificateHandler = new SpringCertificateValidationCallbackHandler();
+	    certificateHandler.setAuthenticationManager(authenticationManager);
+	    return certificateHandler;
 	}
 	
 	@Bean
@@ -45,5 +61,5 @@ public class SignatureXwssInterceptorConfig {
 		ProviderManager authenticationManager = new ProviderManager(
 				Arrays.asList(x509Provider));
 		return authenticationManager;
-	}
+	}*/
 }
