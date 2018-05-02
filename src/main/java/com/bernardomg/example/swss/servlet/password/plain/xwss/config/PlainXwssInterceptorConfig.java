@@ -12,6 +12,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.ws.soap.security.xwss.XwsSecurityInterceptor;
 import org.springframework.ws.soap.security.xwss.callback.SpringPlainTextPasswordValidationCallbackHandler;
 
@@ -39,6 +40,7 @@ public class PlainXwssInterceptorConfig {
 	@Bean
 	public ProviderManager authenticationManager(UserDetailsService userDetailsService) {
 		DaoAuthenticationProvider daoProvider = new DaoAuthenticationProvider();
+		daoProvider.setPasswordEncoder(NoOpPasswordEncoder.getInstance());
 		daoProvider.setUserDetailsService(userDetailsService);
 		ProviderManager authenticationManager = new ProviderManager(
 				Arrays.asList(daoProvider));

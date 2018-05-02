@@ -31,8 +31,9 @@
 	<bean
 		class="com.bernardomg.example.swss.servlet.signature.wss4j.config.SignatureWss4jInterceptorConfig" />
 
-   <!-- Imports key store -->
-   <import resource="classpath:context/keystore/keystore-wss4j.xml" />
+   <!-- Imports key store
+   <import resource="classpath:context/keystore/keystore-wss4j.xml" /> -->
+   <bean class="com.bernardomg.example.swss.main.config.Wss4jCryptoConfig"/>
 
    <!-- Extends client -->
    <bean id="signatureWss4jClient" parent="baseClient" />

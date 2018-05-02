@@ -33,7 +33,9 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
+import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
+import com.bernardomg.example.swss.main.config.KeyStoreConfig;
 import com.bernardomg.example.swss.test.util.SoapMessageUtils;
 import com.bernardomg.example.swss.test.util.config.context.TestContextPaths;
 import com.bernardomg.example.swss.test.util.config.properties.SoapPropertiesPaths;
@@ -48,7 +50,7 @@ import com.bernardomg.example.swss.test.util.test.integration.endpoint.AbstractI
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
-@ContextConfiguration(locations = { TestContextPaths.KEYSTORE })
+@ContextConfiguration(classes = { KeyStoreConfig.class }, loader = AnnotationConfigContextLoader.class)
 @TestPropertySource({ TestPropertiesPaths.KEYSTORE,
         SoapPropertiesPaths.SIGNATURE,
         TestEndpointWss4jPropertiesPaths.SIGNATURE })

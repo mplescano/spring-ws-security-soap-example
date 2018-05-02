@@ -37,8 +37,8 @@ import com.bernardomg.example.swss.test.util.test.unit.client.AbstractTestEntity
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
-@ContextConfiguration(locations = { ClientXwssContextPaths.SIGNATURE,
-        TestContextPaths.KEYSTORE })
+@ContextConfiguration(locations = { ClientXwssContextPaths.SIGNATURE/*,
+        TestContextPaths.KEYSTORE*/ })
 @TestPropertySource({ SoapPropertiesPaths.SIGNATURE })
 public final class TestEntityClientSignatureXwss
         extends AbstractTestEntityClientHeader {

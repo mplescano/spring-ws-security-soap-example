@@ -31,8 +31,9 @@
 	<bean
 		class="com.bernardomg.example.swss.servlet.signature.xwss.config.SignatureXwssInterceptorConfig" />
 
-   <!-- Imports key store -->
-   <import resource="classpath:context/keystore/keystore.xml" />
+   <!-- Imports key store
+   <import resource="classpath:context/keystore/keystore.xml" /> -->
+   <bean class="com.bernardomg.example.swss.main.config.KeyStoreConfig"/>
 
    <!-- Extends client -->
    <bean id="signatureXwssClient" parent="baseClient" />

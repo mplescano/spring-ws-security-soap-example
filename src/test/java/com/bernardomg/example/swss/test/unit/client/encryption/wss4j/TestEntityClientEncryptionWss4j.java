@@ -37,8 +37,8 @@ import com.bernardomg.example.swss.test.util.test.unit.client.AbstractTestEntity
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
-@ContextConfiguration(locations = { ClientWss4jContextPaths.ENCRYPTION,
-        TestContextPaths.KEYSTORE, TestContextPaths.KEYSTORE_WSS4J })
+@ContextConfiguration(locations = { ClientWss4jContextPaths.ENCRYPTION/*,
+        TestContextPaths.KEYSTORE, TestContextPaths.KEYSTORE_WSS4J*/ })
 @TestPropertySource({ SoapPropertiesPaths.ENCRYPTION_XWSS })
 public final class TestEntityClientEncryptionWss4j
         extends AbstractTestEntityClientHeader {

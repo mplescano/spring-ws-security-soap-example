@@ -30,8 +30,9 @@
 	<context:annotation-config />
 	<bean
 		class="com.bernardomg.example.swss.servlet.encryption.xwss.config.EncryptionXwssInterceptorConfig" />
-   <!-- Imports key store -->
-   <import resource="classpath:context/keystore/keystore.xml" />
+   <!-- Imports key store
+   <import resource="classpath:context/keystore/keystore.xml" /> -->
+   <bean class="com.bernardomg.example.swss.main.config.KeyStoreConfig"/>
 
    <!-- Extends client -->
    <bean id="encryptionXwssClient" parent="baseClient" />

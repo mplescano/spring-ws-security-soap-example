@@ -71,7 +71,7 @@ import com.bernardomg.example.swss.generated.entity.Entity;
  *
  * @author Bernardo Mart&iacute;nez Garrido
  */
-@ContextConfiguration(locations = { TestContextPaths.DEFAULT })
+//@ContextConfiguration(locations = { TestContextPaths.DEFAULT })
 @TestPropertySource({ TestPropertiesPaths.ENTITY })
 public abstract class AbstractITEndpoint
         extends AbstractJUnit4SpringContextTests {

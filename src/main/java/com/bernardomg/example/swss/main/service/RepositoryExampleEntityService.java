@@ -90,7 +90,7 @@ public class RepositoryExampleEntityService implements ExampleEntityService {
 
         checkNotNull(identifier, "Received a null pointer as identifier");
 
-        entity = getExampleEntityRepository().findById(identifier).get();
+        entity = getExampleEntityRepository().findById(identifier).orElse(null);
 
         if (entity == null) {
             // No entity found for the id

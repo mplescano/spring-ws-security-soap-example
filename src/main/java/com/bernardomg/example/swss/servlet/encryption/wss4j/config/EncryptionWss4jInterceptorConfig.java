@@ -24,7 +24,7 @@ public class EncryptionWss4jInterceptorConfig {
         Wss4jSecurityInterceptor interceptor = new Wss4jSecurityInterceptor();
         interceptor.setSecurementActions(securityActions);
         interceptor.setSecurementEncryptionUser(keystoreAlias);
-        interceptor.setSecurementSignatureCrypto(keyStoreWSS4J);
+        interceptor.setSecurementEncryptionCrypto(keyStoreWSS4J);
         interceptor.setSecurementEncryptionKeyIdentifier(securityEncryptionKeyIdentifier);
         interceptor.setValidationActions(securityActions);
         interceptor.setValidationCallbackHandler(validationHandler);

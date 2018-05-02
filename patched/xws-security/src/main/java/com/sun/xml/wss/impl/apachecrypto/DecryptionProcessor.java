@@ -175,6 +175,7 @@ public class DecryptionProcessor {
             }
             
             XMLCipher xmlCipher = XMLCipher.getInstance(encryptionAlgorithm);
+            xmlCipher.init(XMLCipher.UNWRAP_MODE, null);
             EncryptedKey encryptedKey = xmlCipher.loadEncryptedKey(xencEncryptedKey);
             
             KeyInfoHeaderBlock keyInfo =  new KeyInfoHeaderBlock(encryptedKey.getKeyInfo());

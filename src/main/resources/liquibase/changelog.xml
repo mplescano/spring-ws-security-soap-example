@@ -61,20 +61,25 @@
       <insert tableName="users">
          <column name="name">myuser</column>
          <column name="password">myPassword</column>
+         <!-- <column name="password">{noop}myPassword</column>-->
       </insert>
    </changeSet>
 
    <changeSet author="Bernardo" id="initial_data">
       <insert tableName="example_entities">
+         <column name="id">1</column>
          <column name="name">entity_1</column>
       </insert>
       <insert tableName="example_entities">
+         <column name="id">2</column>
          <column name="name">entity_2</column>
       </insert>
       <insert tableName="example_entities">
+         <column name="id">3</column>
          <column name="name">entity_3</column>
       </insert>
       <insert tableName="example_entities">
+         <column name="id">4</column>
          <column name="name">entity_4</column>
       </insert>
    </changeSet>
